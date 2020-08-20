@@ -9,9 +9,6 @@ explanation of design patterns in simplest way possible
 
 ***
 
-
-<sub>Check out my [blog](http://kamranahmed.info) and say "hi" on [Twitter](https://twitter.com/kamranahmedse).</sub>
-
 Introduction
 =================
 
@@ -23,14 +20,6 @@ Wikipedia describes them as
 
 > In software engineering, a software design pattern is a general reusable solution to a commonly occurring problem within a given context in software design. It is not a finished design that can be transformed directly into source or machine code. It is a description or template for how to solve a problem that can be used in many different situations.
 
-⚠️ Be Careful
------------------
-- Design patterns are not a silver bullet to all your problems.
-- Do not try to force them; bad things are supposed to happen, if done so. 
-- Keep in mind that design patterns are solutions **to** problems, not solutions **finding** problems; so don't overthink.
-- If used in a correct place in a correct manner, they can prove to be a savior; or else they can result in a horrible mess of a code.
-
-> Also note that the code samples below are in PHP-7, however this shouldn't stop you because the concepts are same anyways.
 
 Types of Design Patterns
 -----------------
@@ -69,55 +58,55 @@ Wikipedia says
 **Programmatic Example**
 
 First of all we have a door interface and the implementation
-```php
+```java
 interface Door
 {
-    public function getWidth(): float;
-    public function getHeight(): float;
+    public float getWidth();
+    public float getHeight();
 }
 
 class WoodenDoor implements Door
 {
-    protected $width;
-    protected $height;
+    protected width;
+    protected height;
 
-    public function __construct(float $width, float $height)
+    public WoodenDoor(float width, float height)
     {
-        $this->width = $width;
-        $this->height = $height;
+        this.width = width;
+        this.height = height;
     }
 
-    public function getWidth(): float
+    public float getWidth()
     {
-        return $this->width;
+        return this.width;
     }
 
-    public function getHeight(): float
+    public float getHeight()
     {
-        return $this->height;
+        return this.height;
     }
 }
 ```
 Then we have our door factory that makes the door and returns it
-```php
+```java
 class DoorFactory
 {
-    public static function makeDoor($width, $height): Door
+    public static Door makeDoor(width, height)
     {
-        return new WoodenDoor($width, $height);
+        return new WoodenDoor(width, height);
     }
 }
 ```
 And then it can be used as
-```php
+```java
 // Make me a door of 100x200
-$door = DoorFactory::makeDoor(100, 200);
+Door door = DoorFactory.makeDoor(100, 200);
 
-echo 'Width: ' . $door->getWidth();
-echo 'Height: ' . $door->getHeight();
+System.out.println("Width: " + door.getWidth());
+System.out.println("Height:" + door.getHeight());
 
 // Make me a door of 50x100
-$door2 = DoorFactory::makeDoor(50, 100);
+Door door2 = DoorFactory.makeDoor(50, 100);
 ```
 
 **When to Use?**
